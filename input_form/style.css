@@ -1,18 +1,32 @@
 body {
     text-align: center;
-    font-family: OpenSansLight;
+    background-image: url('bg.jpg');
+    background-repeat: no-repeat;
+}
+.section-container {
+    width: 34%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 20px;
 }
 section {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-  padding: 20px;
+    position: absolute;
+  display: block;
+
+}
+p {
+    color: #04220c;
+    font-family: OpenSansLight;    
+}
+.form-backgrount {
+    width: 400px;
+    height: 625px;
+    background-color: #a9d7dd;
+    opacity: 0.6;
 }
 .registrate-form {
     width: 400px;
-    background-color: #a9d7dd;
-    margin-bottom: 200px;
 }
 input, select {
     width: 80%;
@@ -24,6 +38,9 @@ input, select {
 select {
     width: 86%;
 }
+option {
+    background-color: #f4fffb;
+}
 /*input[name="submit"] {
     width: 86%;
     background-color: #0b0962;
@@ -33,12 +50,14 @@ select {
 }*/
 .variants {
     color: black;
-    background-color: #dbe5e5;
+    background-color: #cff4e5;
     cursor: pointer;
+    padding: 10px;
+    margin: 10px;
 }
 button {
     width: 86%;
-    background-color: #0b0962;
+    background-color: #04346b;
     color: white;
     cursor: pointer;
     text-transform: uppercase;
@@ -47,12 +66,16 @@ button {
 }
 .option-chosen {
     display: none;
-    color: #fa5f94;
+    color: #d41a0d;
     text-decoration: underline;
 }
 .results {
-    color: #607d8b;
+    color: #0e3f1a;
 }
 .close-symbol:hover {
     font-size: 12px;
+}
+textarea {
+    padding: 10px;
+    margin: 10px;
 }
