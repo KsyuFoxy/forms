@@ -1,0 +1,50 @@
+body {
+    text-align: center;
+    font-family: OpenSansLight;
+}
+section {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding: 20px;
+}
+.registrate-form {
+    width: 400px;
+    background-color: #a9d7dd;
+    margin-bottom: 200px;
+}
+input, select {
+    width: 80%;
+    background-color: white;
+    margin: 8px;
+    padding: 10px;
+    color: #0b0962;
+}
+select {
+    width: 86%;
+}
+/*input[name="submit"] {
+    width: 86%;
+    background-color: #0b0962;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+}*/
+.variants {
+    color: grey;
+}
+button {
+    width: 86%;
+    background-color: #0b0962;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin: 8px;
+    padding: 10px;
+}
+.option-chosen {
+    display: none;
+    color: #fa5f94;
+    text-decoration: underline;
+}
