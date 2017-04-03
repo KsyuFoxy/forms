@@ -32,7 +32,9 @@ select {
     text-transform: uppercase;
 }*/
 .variants {
-    color: grey;
+    color: black;
+    background-color: #dbe5e5;
+    cursor: pointer;
 }
 button {
     width: 86%;
@@ -47,4 +49,10 @@ button {
     display: none;
     color: #fa5f94;
     text-decoration: underline;
+}
+.results {
+    color: #607d8b;
+}
+.close-symbol:hover {
+    font-size: 12px;
 }
