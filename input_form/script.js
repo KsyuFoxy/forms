@@ -2,32 +2,32 @@
 var formResults = document.getElementById('results');
 var person = {fname: '', femail: '', title: '', country: '', region: ''};
 var inputValue = document.getElementsByTagName("input");
+var warningMsgExist = false;
+
   function validateForm() {
       // create element for warning message
-    // var warningMsg = document.createElement('p');
-    // warningMsg.setAttribute('style', 'margin: 0; color: red;');
-    // warningMsg.id = 'warningP';
-    // var warningMsgExist = false;
+    var warningMsg = document.createElement('p');
+    warningMsg.setAttribute('style', 'margin: 0; color: red;');
+    warningMsg.id = 'warningP';
 
     // required textarea field
        var customerText = document.querySelector('textarea');
- //       if( customerText.value === '') {
- //           warningMsg.innerHTML = 'Text must be filled out';
- //           insertAfter(customerText, warningMsg);
- //           customerText.style.borderColor = 'red';
- //           warningMsgExist = true;
- //              return false;
- //          }
- //          else if (warningMsgExist === true) {
- //             customerText.style.borderColor = '#a9a9a9'; // grey border textarea
- //             document.getElementById('warningP').remove();
- //             return false;
- //         }
- //         else {
- //             customerText.style.borderColor = '#a9a9a9'; // grey border textarea
- //         }
- //
- // console.log('warningMsgExist', warningMsgExist)
+       if ( customerText.value === '' && warningMsgExist === false) {
+           warningMsg.innerHTML = 'Text must be filled out';
+           insertAfter(customerText, warningMsg);
+           customerText.style.borderColor = 'red';
+           warningMsgExist = true;
+          }
+          else if (warningMsgExist === true && customerText.value !== '') {
+             customerText.style.borderColor = '#a9a9a9'; // grey border textarea
+             document.getElementById('warningP').remove();
+             warningMsgExist = false;
+         }
+        //  else {
+        //       customerText.style.borderColor = '#a9a9a9'; // grey border textarea
+        //  }
+
+ console.log('warningMsgExist', warningMsgExist)
 
      // required name field
 var requiredName  = document.getElementsByName('fname')[0];
@@ -70,24 +70,24 @@ var requiredEmail  = document.getElementsByName('femail')[0];
 //       }
 //    }
 
-    if (requiredName.value ==='' || requiredEmail.value === '' || customerText.value === '') {
-        formResults.innerHTML = 'Name, Email and Text must be filled out';
-        formResults.style.color =  'red';
-        requiredName.style.borderColor =  'red';
-        requiredEmail.style.borderColor =  'red';
-        customerText.style.borderColor =  'red';
-        return false;
-    }
-
-    for (i = 0; i < inputValue.length; i++) {
-        for (var i in person) {
-            person[i] = inputValue[i].value;
-            person[i].onkeypress = function(){
-                person[i].style.borderColor =  'blue';
-            };
-
-        }
-    }
+    // if (requiredName.value ==='' || requiredEmail.value === '' || customerText.value === '') {
+    //     formResults.innerHTML = 'Name, Email and Text must be filled out';
+    //     formResults.style.color =  'red';
+    //     requiredName.style.borderColor =  'red';
+    //     requiredEmail.style.borderColor =  'red';
+    //     customerText.style.borderColor =  'red';
+    //     return false;
+    // }
+    //
+    // for (i = 0; i < inputValue.length; i++) {
+    //     for (var i in person) {
+    //         person[i] = inputValue[i].value;
+    //         person[i].onkeypress = function(){
+    //             person[i].style.borderColor =  'blue';
+    //         };
+    //
+    //     }
+    // }
 
 // array of services that were chosen by customer
     var services = [];
