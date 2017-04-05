@@ -1,93 +1,108 @@
 // fill out a form
 var formResults = document.getElementById('results');
-var person = {fname: '', femail: '', title: '', country: '', region: ''};
+var person = {name: '', email: '', title: '', country: '', region: ''};
 var inputValue = document.getElementsByTagName("input");
-var warningMsgExist = false;
+var warningMsgNameExist = false;
+var warningMsgEmailExist = false;
+var warningMsgTextExist = false;
 
   function validateForm() {
-      // create element for warning message
-    var warningMsg = document.createElement('p');
-    warningMsg.setAttribute('style', 'margin: 0; color: red;');
-    warningMsg.id = 'warningP';
+// required name field
+var requiredName  = document.getElementsByName('name')[0];
+    if(requiredName.value === ''  && warningMsgNameExist === false) {
+        var warningMsgName = document.createElement('p');
+        warningMsgName.setAttribute('style', 'margin: 0; color: red;');
+        warningMsgName.id = 'warningName';
+        warningMsgName.innerHTML = 'Name must be filled out';
+        insertAfter(requiredName, warningMsgName);
+        requiredName.style.borderColor = 'red';
+        warningMsgNameExist = true;
+       }
+       else if (requiredName.value === ''  && warningMsgNameExist === true) {
+           requiredName.style.borderColor = 'red';
+       }
+       else if (requiredName.value !== '' && warningMsgNameExist === true) {
+           requiredName.style.borderColor = '#a9a9a9'; // grey border name
+           document.getElementById('warningName').remove();
+           warningMsgNameExist = false;
+       } else {
+           requiredName.style.borderColor = '#a9a9a9'; // grey border name
+       }
 
-    // required textarea field
-       var customerText = document.querySelector('textarea');
-       if ( customerText.value === '' && warningMsgExist === false) {
-           warningMsg.innerHTML = 'Text must be filled out';
-           insertAfter(customerText, warningMsg);
-           customerText.style.borderColor = 'red';
-           warningMsgExist = true;
+// validate email address
+    function validateEmail(email) {
+     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+     return re.test(email);
+    }
+// required email field
+var requiredEmail  = document.getElementsByName('email')[0];
+var warningMsgEmail = document.createElement('p');
+warningMsgEmail.setAttribute('style', 'margin: 0; color: red;');
+warningMsgEmail.id = 'warningEmail';
+
+    if ( requiredEmail.value === '' && warningMsgEmailExist === false) {
+       warningMsgEmail.innerHTML = 'Email must be filled out';
+       insertAfter(requiredEmail, warningMsgEmail);
+       requiredEmail.style.borderColor = 'red';
+       warningMsgEmailExist = true;
+      }
+      else if (requiredEmail.value === ''  && warningMsgEmailExist === true) {
+          requiredEmail.style.borderColor = 'red';
+      }
+      else if (requiredEmail.value !== '' && warningMsgEmailExist === true) {
+          requiredEmail.style.borderColor = '#a9a9a9'; // grey border email
+          document.getElementById('warningEmail').remove();
+           warningMsgEmailExist = false;
+           if ( validateEmail(requiredEmail.value) == false && warningMsgEmailExist === false) {
+               warningMsgEmail.innerHTML = 'Email is not correct';
+               warningMsgEmail.style.color = '#ff22d6'; // violet text
+               insertAfter(requiredEmail, warningMsgEmail);
+               requiredEmail.style.borderColor = '#ff22d6'; // violet border
+               warningMsgEmailExist = true;
+           } else if ( validateEmail(requiredEmail.value) == false &&  warningMsgEmailExist === true) {
+               document.getElementById('warningEmail').remove();
+               warningMsgEmailExist = false;
+           }
+      } else {
+          requiredEmail.style.borderColor = '#a9a9a9'; // grey border email
+          if ( validateEmail(requiredEmail.value) == false && warningMsgEmailExist === false) {
+              warningMsgEmail.innerHTML = 'Email is not correct';
+              warningMsgEmail.style.color = '#ff22d6'; // violet text
+              insertAfter(requiredEmail, warningMsgEmail);
+              requiredEmail.style.borderColor = '#ff22d6'; // violet border
+              warningMsgEmailExist = true;
+          } else if ( validateEmail(requiredEmail.value) == false &&  warningMsgEmailExist === true) {
+              document.getElementById('warningEmail').remove();
+              warningMsgEmailExist = false;
           }
-          else if (warningMsgExist === true && customerText.value !== '') {
-             customerText.style.borderColor = '#a9a9a9'; // grey border textarea
-             document.getElementById('warningP').remove();
-             warningMsgExist = false;
-         }
-        //  else {
-        //       customerText.style.borderColor = '#a9a9a9'; // grey border textarea
-        //  }
+      }
+// required textarea field
+    var customerText = document.querySelector('textarea');
+         if ( customerText.value === '' && warningMsgTextExist === false) {
+             var warningMsgText = document.createElement('p');
+             warningMsgText.setAttribute('style', 'margin: 0; color: red;');
+             warningMsgText.id = 'warningText';
+             warningMsgText.innerHTML = 'Text must be filled out';
+             insertAfter(customerText, warningMsgText);
+             customerText.style.borderColor = 'red';
+             warningMsgTextExist = true;
+            }
+            else if (customerText.value === ''  && warningMsgTextExist === true) {
+                customerText.style.borderColor = 'red';
+            }
+            else if (warningMsgTextExist === true && customerText.value !== '') {
+               customerText.style.borderColor = '#a9a9a9'; // grey border textarea
+               document.getElementById('warningText').remove();
+               warningMsgTextExist = false;
+           } else {
+               customerText.style.borderColor = '#a9a9a9'; // grey border name
+           }
 
- console.log('warningMsgExist', warningMsgExist)
-
-     // required name field
-var requiredName  = document.getElementsByName('fname')[0];
-//     if( requiredName.value === '') {
-//         warningMsg.innerHTML = 'Name must be filled out';
-//         insertAfter(requiredName, warningMsg);
-//         requiredName.style.borderColor = 'red';
-//         warningMsgExist = true;
-//            return false;
-//        }
-//        else {
-//            requiredName.style.borderColor = '#a9a9a9'; // grey border textarea
-//            document.getElementById('warningP').remove();
-//        }
-    // required email field
-var requiredEmail  = document.getElementsByName('femail')[0];
-//     if( requiredEmail.value === '') {
-//        warningMsg.innerHTML = 'Email must be filled out';
-//        insertAfter(requiredEmail, warningMsg);
-//        requiredEmail.style.borderColor = 'red';
-//        warningMsgExist = true;
-//           return false;
-//       }
-//       else {
-//           requiredEmail.style.borderColor = '#a9a9a9'; // grey border textarea
-//           document.getElementById('warningP').remove();
-//       }
-
-
-//   required 'name', 'email' and 'text'
-// for (x = 0; x < inputValue.length; x++) {
-//     reqName = inputValue[x].getAttribute("name");
-//     if (reqName.indexOf("f") == 0) {
-//         var requiredField = inputValue[x].value;
-//         if (requiredField == '' || customerText.value === '') {
-//             formResults.innerHTML = 'Name and Email, Text must be filled out';
-//             formResults.style.color =  'red';
-//             return false;
-//         }
-//       }
-//    }
-
-    // if (requiredName.value ==='' || requiredEmail.value === '' || customerText.value === '') {
-    //     formResults.innerHTML = 'Name, Email and Text must be filled out';
-    //     formResults.style.color =  'red';
-    //     requiredName.style.borderColor =  'red';
-    //     requiredEmail.style.borderColor =  'red';
-    //     customerText.style.borderColor =  'red';
-    //     return false;
-    // }
-    //
-    // for (i = 0; i < inputValue.length; i++) {
-    //     for (var i in person) {
-    //         person[i] = inputValue[i].value;
-    //         person[i].onkeypress = function(){
-    //             person[i].style.borderColor =  'blue';
-    //         };
-    //
-    //     }
-    // }
+// if (warningMsgNameExist=== true && warningMsgEmailExist===true && warningMsgTextExist===true) {
+//    requiredName.style.borderColor = 'yellow';
+//    requiredEmail.style.borderColor = 'yellow';
+//    requiredText.style.borderColor = 'yellow';
+// }
 
 // array of services that were chosen by customer
     var services = [];
@@ -95,14 +110,19 @@ var requiredEmail  = document.getElementsByName('femail')[0];
     for (j=0; j<o.length; j++) {
         services.push(o[j].textContent);
     }
-    formResults.innerHTML = 'Name: ' + person.fname +"<br>"+ 'Email: ' + person.femail +"<br>"+ 'Title: ' + person.title +"<br>"+ 'Country: '+
+    for (i = 0; i < inputValue.length; i++) {
+        for (var i in person) {
+            person[i] = inputValue[i].value;
+            };
+        }
+    formResults.innerHTML = 'Name: ' + person.name +"<br>"+ 'Email: ' + person.email +"<br>"+ 'Title: ' + person.title +"<br>"+ 'Country: '+
                             person.country +"<br>"+'Region: ' + person.region + "<br>"+ 'Your text: ' + customerText.value + "<br>"+ 'Chosen services: ' + services;
     formResults.style.color =  '#0e3f1a';
     changeformBGHeight();
 
-    console.log('person:', person);
-    console.log('customerText.value:', customerText.value);
-    console.log('services:', services);
+    // console.log('person:', person);
+    // console.log('customerText.value:', customerText.value);
+    // console.log('services:', services);
 }
 
 // when drop-down option is selected, how its name before submit button
