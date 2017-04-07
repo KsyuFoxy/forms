@@ -4,29 +4,29 @@ body {
     background-repeat: no-repeat;
 }
 .section-container {
-    width: 34%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
     padding: 20px;
 }
 section {
     position: absolute;
-  display: block;
+    display: block;
 
 }
 p {
     color: #04220c;
     font-family: OpenSansLight;
+    font-size: 16px;
 }
 .form-backgrount {
-    width: 400px;
+    width: 80%;
     height: 625px;
     background-color: #a9d7dd;
     opacity: 0.6;
 }
 .registrate-form {
-    width: 400px;
+    width: 80%;
 }
 input, select {
     width: 80%;
@@ -34,6 +34,7 @@ input, select {
     margin: 8px;
     padding: 10px;
     color: #0b0962;
+    font-size: 14px;
 }
 select {
     width: 86%;
@@ -56,6 +57,7 @@ option {
     margin: 10px;
 }
 button {
+    font-size: 14px;
     width: 86%;
     background-color: #04346b;
     color: white;
@@ -76,6 +78,13 @@ button {
     font-size: 12px;
 }
 textarea {
+    width: 80%;
     padding: 10px;
     margin: 10px;
+    font-size: 13px;
+}
+@media only screen and (min-width : 600px ) {
+    .section-container, .form-backgrount, .registrate-form {
+        width: 400px;
+    }
 }
